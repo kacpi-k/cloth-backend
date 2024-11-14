@@ -1,5 +1,7 @@
 package dev.kkoncki.cloth.user.management.service;
 
+import dev.kkoncki.cloth.commons.ApplicationException;
+import dev.kkoncki.cloth.commons.ErrorCode;
 import dev.kkoncki.cloth.user.management.User;
 import dev.kkoncki.cloth.user.management.forms.CreateUserForm;
 import dev.kkoncki.cloth.user.management.forms.EditUserForm;
@@ -20,7 +22,7 @@ public class UserManagementServiceImpl implements UserManagementService {
 
     @Override
     public User get(String id) {
-        return userManagementRepository.get(id).orElseThrow(); // TODO custom exception
+        return userManagementRepository.get(id).orElseThrow(() -> new ApplicationException(ErrorCode.USER_NOT_FOUND));
     }
 
     @Override
