@@ -1,9 +1,11 @@
 package dev.kkoncki.cloth.user.management;
 
 import dev.kkoncki.cloth.user.management.repository.UserManagementRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class UserManagementRepositoryAdapter implements UserManagementRepository {
 
     private final JpaUserManagementRepository userManagementRepository;
