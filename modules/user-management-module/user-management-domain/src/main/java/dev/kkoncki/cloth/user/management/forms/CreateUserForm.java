@@ -1,8 +1,6 @@
 package dev.kkoncki.cloth.user.management.forms;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +25,7 @@ public class CreateUserForm {
     @Email(message = "Email is invalid")
     private String email;
 
-    @NotNull(message = "Gender must be 1 or 2")
+    @Min(value = 1, message = "Gender must be 1 or 2")
+    @Max(value = 2, message = "Gender must be 1 or 2") // TODO custom annotation?
     private int gender;
 }
