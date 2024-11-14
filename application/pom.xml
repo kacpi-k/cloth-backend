@@ -10,4 +10,21 @@
     </parent>
     <artifactId>application</artifactId>
     <version>${revision}</version>
+    <dependencies>
+        <dependency>
+            <groupId>dev.kkoncki.cloth</groupId>
+            <artifactId>user-management-domain</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.kkoncki.cloth</groupId>
+            <artifactId>user-management-infrastructure</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.kkoncki.cloth</groupId>
+            <artifactId>user-management-rest</artifactId>
+            <version>${revision}</version>
+        </dependency>
+    </dependencies>
 </project>
