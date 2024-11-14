@@ -13,6 +13,12 @@
     <dependencies>
         <dependency>
             <groupId>dev.kkoncki.cloth</groupId>
+            <artifactId>user-management-domain</artifactId>
+            <version>${revision}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>dev.kkoncki.cloth</groupId>
             <artifactId>rest</artifactId>
             <version>${revision}</version>
         </dependency>
