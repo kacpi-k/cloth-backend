@@ -13,7 +13,17 @@
     <dependencies>
         <dependency>
             <groupId>dev.kkoncki.cloth</groupId>
+            <artifactId>auth-domain</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.kkoncki.cloth</groupId>
             <artifactId>infrastructure</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.kkoncki.cloth</groupId>
+            <artifactId>security</artifactId>
             <version>${revision}</version>
         </dependency>
     </dependencies>
