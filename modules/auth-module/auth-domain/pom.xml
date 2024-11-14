@@ -16,5 +16,10 @@
             <artifactId>domain</artifactId>
             <version>${revision}</version>
         </dependency>
+        <dependency>
+            <groupId>dev.kkoncki.cloth</groupId>
+            <artifactId>user-management-domain</artifactId>
+            <version>${revision}</version>
+        </dependency>
     </dependencies>
 </project>

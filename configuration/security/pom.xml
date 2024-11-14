@@ -32,7 +32,7 @@
         <dependency>
             <groupId>dev.kkoncki.cloth</groupId>
             <artifactId>domain</artifactId>
-            <version>1.0.1</version>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>
