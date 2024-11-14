@@ -9,5 +9,5 @@ public interface UserManagementService {
     User get(String id);
     User save(@Valid CreateUserForm form);
     User update(@Valid EditUserForm form);
-    User createSysAdminOnStartup(@Valid CreateUserForm form);
+    User saveSysAdminOnStartup(@Valid CreateUserForm form);
 }
