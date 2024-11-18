@@ -1,4 +1,4 @@
-package dev.kkoncki.cloth.auth;
+package dev.kkoncki.cloth.auth.security;
 
 import dev.kkoncki.cloth.commons.ApplicationException;
 import dev.kkoncki.cloth.commons.ErrorCode;
