@@ -50,6 +50,16 @@ public class UserManagementServiceImpl implements UserManagementService {
 
     @Override
     public User saveSysAdminOnStartup(CreateUserForm form) {
-        return null;
+
+        User user = User.builder()
+                .id(UUID.randomUUID().toString())
+                .firstName(form.getFirstName())
+                .lastName(form.getLastName())
+                .email(form.getEmail())
+                .gender(form.getGender())
+                .createdOn(Instant.now())
+                .build();
+
+        return userManagementRepository.save(user);
     }
 }

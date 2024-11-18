@@ -12,6 +12,4 @@ public interface AuthService {
     LoginResponse login(@Valid LoginForm logInRequest);
 
     void createUser(@Valid CreateUserWithPasswordForm createUserRequest);
-
-    void logout(String userId);
 }
