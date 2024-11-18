@@ -21,3 +21,10 @@ spring:
       secret: ${JWT_SECRET}
       tokenExpirationTimeInMinutes: 10000
       securityFilterPath: /api/auth/**
+
+app:
+  auth:
+    sysAdminFirstName: admin
+    sysAdminLastName: admin
+    sysAdminEmail: ${ADMIN_EMAIL}
+    sysAdminPassword: ${ADMIN_PASSWORD}
