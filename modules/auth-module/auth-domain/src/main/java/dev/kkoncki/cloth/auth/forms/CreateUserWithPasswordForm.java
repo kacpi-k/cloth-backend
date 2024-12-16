@@ -3,13 +3,11 @@ package dev.kkoncki.cloth.auth.forms;
 import dev.kkoncki.cloth.user.management.forms.CreateUserForm;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateUserWithPasswordForm extends CreateUserForm {

@@ -14,5 +14,8 @@ import java.util.List;
 public class Color {
     private String id;
     private String title;
-    private List<Integer> rgb;
+    private int red;
+    private int green;
+    private int blue;
+    private String productId;
 }

@@ -1,0 +1,56 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create-product-table" author="Kacper Koncki">
+        <createTable tableName="product">
+            <column name="id" type="VARCHAR(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DOUBLE PRECISION">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discounted_price" type="DOUBLE PRECISION">
+                <constraints nullable="true"/>
+            </column>
+            <column name="gender" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sales_number" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <createTable tableName="product_sizes">
+            <column name="product_id" type="VARCHAR(255)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_product_sizes_product"
+                             references="product(id)"/>
+            </column>
+            <column name="size" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="product_images">
+            <column name="product_id" type="VARCHAR(255)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_product_images_product"
+                             references="product(id)"/>
+            </column>
+            <column name="image_url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
