@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      file: classpath:db/changelog/product/create-product-table.xml
+      relativeToChangelogFile: false
+  - include:
+      file: classpath:db/changelog/product/create-category-table.xml
+      relativeToChangelogFile: false
+  - include:
+      file: classpath:db/changelog/product/create-color-table.xml
+      relativeToChangelogFile: false

@@ -11,7 +11,7 @@ public interface ProductService {
     List<Product> getTopSelling();
     List<Product> getNewIn();
     Product save(CreateProductForm form);
-    void addOrRemoveFavoriteProduct(String userId, String productId);
-    boolean isFavorite(String userId, String productId);
-    List<Product> getFavoriteProducts(String userId);
+    void addOrRemoveFavoriteProduct(String userId, String productId); //TODO
+    boolean isFavorite(String userId, String productId);//TODO
+    List<Product> getFavoriteProducts(String userId); //TODO
 }

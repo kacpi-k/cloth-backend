@@ -1,0 +1,30 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create-color-table" author="Kacper Koncki">
+        <createTable tableName="color">
+            <column name="id" type="VARCHAR(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="red" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="green" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="blue" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="VARCHAR(255)">
+                <constraints nullable="false"
+                             foreignKeyName="fk_color_product"
+                             references="product(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
