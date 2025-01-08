@@ -9,7 +9,8 @@ import java.util.stream.Collectors;
 public class ProductMapper {
 
     public static ProductEntity toProductEntity(Product product) {
-        ProductEntity productEntity = ProductEntity.builder()
+
+        return ProductEntity.builder()
                 .id(product.getId())
                 .title(product.getTitle())
                 .categoryId(product.getCategoryId())
@@ -21,14 +22,6 @@ public class ProductMapper {
                 .sizes(product.getSizes())
                 .images(product.getImages())
                 .build();
-
-        List<ColorEntity> colorEntities = product.getColors().stream()
-                .map(color -> ColorMapper.toColorEntity(color, productEntity))
-                .collect(Collectors.toList());
-
-        productEntity.setColors(colorEntities);
-
-        return productEntity;
     }
 
     public static Product toProduct(ProductEntity productEntity) {
@@ -43,9 +36,6 @@ public class ProductMapper {
                 .salesNumber(productEntity.getSalesNumber())
                 .sizes(productEntity.getSizes())
                 .images(productEntity.getImages())
-                .colors(productEntity.getColors().stream()
-                        .map(ColorMapper::toColor)
-                        .collect(Collectors.toList()))
                 .build();
     }
 }

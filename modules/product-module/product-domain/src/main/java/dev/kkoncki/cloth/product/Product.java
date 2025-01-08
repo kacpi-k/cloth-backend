@@ -22,5 +22,4 @@ public class Product {
     private int salesNumber;
     private List<String> sizes;
     private List<String> images;
-    private List<Color> colors;
 }

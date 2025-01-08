@@ -10,4 +10,5 @@ public interface UserManagementService {
     User save(@Valid CreateUserForm form);
     User update(@Valid EditUserForm form);
     User saveSysAdminOnStartup(@Valid CreateUserForm form);
+    void saveFavoriteProduct(User user);
 }

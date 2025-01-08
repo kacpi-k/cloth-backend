@@ -52,7 +52,4 @@ public class ProductEntity {
     @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
     @Column(name = "image_url")
     private List<String> images;
-
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    private List<ColorEntity> colors;
 }

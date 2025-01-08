@@ -1,6 +1,5 @@
 package dev.kkoncki.cloth.product.forms;
 
-import dev.kkoncki.cloth.product.color.Color;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +17,8 @@ public class CreateProductForm {
     @Length(min = 2, message = "Title must be at least 2 characters long")
     private String title;
 
-    @NotBlank(message = "Categody ID must not be blank")
+    @NotNull(message = "CategoryId cannot be null.")
+    @Size(min = 36, max = 36, message = "ID must have 36 characters.")
     private String categoryId;
 
     @NotNull(message = "Price must not be null")
@@ -34,13 +34,9 @@ public class CreateProductForm {
 
     @NotEmpty(message = "Sizes list cannot be empty")
     @NotNull(message = "Sizes list cannot be null")
-    private List<String> sizes;
+    private List<String> sizeList;
 
     @NotEmpty(message = "Images list cannot be empty")
     @NotNull(message = "Images list cannot be null")
-    private List<String> images;
-
-    @NotEmpty(message = "Colors list cannot be empty")
-    @NotNull(message = "Colors list cannot be null")
-    private List<Color> colors;
+    private List<String> imageList;
 }

@@ -20,9 +20,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="product_id" type="VARCHAR(255)">
-                <constraints nullable="false"
-                             foreignKeyName="fk_color_product"
-                             references="product(id)"/>
+                <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
