@@ -32,7 +32,6 @@ public class ColorEntity {
     @Column(name = "blue")
     private int blue;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private ProductEntity product;
+    @Column(name = "product_id")
+    private String productId;
 }

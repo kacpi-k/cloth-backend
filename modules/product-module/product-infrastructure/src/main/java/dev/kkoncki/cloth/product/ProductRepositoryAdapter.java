@@ -38,15 +38,15 @@ public class ProductRepositoryAdapter implements ProductRepository {
     }
 
     @Override
-    public List<Product> findTopSelling() {
-        List<ProductEntity> productEntities = productRepositoryJpa.findBySalesNumberGreaterThan(30);
+    public List<Product> findTopSelling(int salesNumber) {
+        List<ProductEntity> productEntities = productRepositoryJpa.findBySalesNumberGreaterThan(salesNumber);
         return productEntities.stream()
                 .map(ProductMapper::toProduct)
                 .toList();
     }
 
     @Override
-    public Optional<Product> findByCategoryId(String categoryId) {
-        return productRepositoryJpa.findByCategoryId(categoryId).map(ProductMapper::toProduct);
+    public List<Product> findByCategoryId(String categoryId) {
+        return productRepositoryJpa.findByCategoryId(categoryId).stream().map(ProductMapper::toProduct).toList();
     }
 }

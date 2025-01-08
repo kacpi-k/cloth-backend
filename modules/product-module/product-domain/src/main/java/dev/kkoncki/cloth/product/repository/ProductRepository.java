@@ -7,10 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository {
-
     Product save(Product product);
     Optional<Product> findById(String id);
     List<Product> findNewIn(Instant thresholdDate);
-    List<Product> findTopSelling();
-    Optional<Product> findByCategoryId(String categoryId);
+    List<Product> findTopSelling(int salesNumber);
+    List<Product> findByCategoryId(String categoryId);
 }
