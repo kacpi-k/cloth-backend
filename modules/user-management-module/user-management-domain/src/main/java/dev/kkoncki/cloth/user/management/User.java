@@ -5,8 +5,7 @@ import lombok.*;
 import java.time.Instant;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -19,4 +18,8 @@ public class User {
     private int gender;
     private Instant createdOn;
     private List<String> favoriteProductsIds;
+
+    public List<String> getFavoriteProductIds() {
+        return favoriteProductsIds;
+    }
 }

@@ -25,7 +25,7 @@ public class CategoryServiceTest {
         Category category = service.save(new CreateCategoryForm("Shoes", "shoes"));
         assertNotNull(category.getId());
         assertEquals(category.getTitle(), "Shoes");
-        assertEquals(category.getImage(), "shoes");
+        assertEquals(category.getImageUrl(), "shoes");
     }
 
     @Test

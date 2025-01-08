@@ -45,5 +45,6 @@ public class UserEntity {
         this.email = user.getEmail();
         this.gender = user.getGender();
         this.createdOn = user.getCreatedOn();
+        this.favoriteProductIds = user.getFavoriteProductIds();
     }
 }
