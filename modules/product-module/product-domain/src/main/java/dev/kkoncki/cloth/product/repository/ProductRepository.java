@@ -12,4 +12,5 @@ public interface ProductRepository {
     List<Product> findNewIn(Instant thresholdDate);
     List<Product> findTopSelling(int salesNumber);
     List<Product> findByCategoryId(String categoryId);
+    List<Product> findByIds(List<String> favoriteProductsIds);
 }

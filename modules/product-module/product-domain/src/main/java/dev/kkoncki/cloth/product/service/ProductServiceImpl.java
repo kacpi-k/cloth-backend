@@ -6,6 +6,8 @@ import dev.kkoncki.cloth.product.Product;
 import dev.kkoncki.cloth.product.forms.CreateProductForm;
 import dev.kkoncki.cloth.product.forms.UpdateProductForm;
 import dev.kkoncki.cloth.product.repository.ProductRepository;
+import dev.kkoncki.cloth.user.management.User;
+import dev.kkoncki.cloth.user.management.service.UserManagementService;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -17,9 +19,11 @@ import java.util.UUID;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final UserManagementService userManagementService;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, UserManagementService userManagementService) {
         this.productRepository = productRepository;
+        this.userManagementService = userManagementService;
     }
 
     @Override
@@ -66,28 +70,42 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product update(UpdateProductForm form) {
-        Product existingProduct = getOrThrowProductById(form.getId());
+    public void update(UpdateProductForm form) {
+        Product existingProduct = getProductById(form.getId());
 
         existingProduct.setSizes(form.getSizeList());
         existingProduct.setImages(form.getImageList());
 
-        return productRepository.save(existingProduct);
+        productRepository.save(existingProduct);
     }
 
     @Override
     public void addOrRemoveFavoriteProduct(String userId, String productId) {
-
+        User user = userManagementService.get(userId);
+        if (user.getFavoriteProductsIds().contains(productId)) {
+            user.getFavoriteProductsIds().remove(productId);
+        } else {
+            user.getFavoriteProductsIds().add(productId);
+        }
+        userManagementService.saveFavoriteProduct(user);
     }
 
     @Override
     public boolean isFavorite(String userId, String productId) {
-        return false;
+        User user = userManagementService.get(userId);
+        return user.getFavoriteProductsIds().contains(productId);
     }
 
     @Override
     public List<Product> getFavoriteProducts(String userId) {
-        return List.of();
+        User user = userManagementService.get(userId);
+        List<Product> products = productRepository.findByIds(user.getFavoriteProductsIds());
+        if (!products.isEmpty()) {
+            return products;
+        } else {
+            throw new ApplicationException(ErrorCode.PRODUCT_NOT_FOUND);
+        }
+
     }
 
     @Override

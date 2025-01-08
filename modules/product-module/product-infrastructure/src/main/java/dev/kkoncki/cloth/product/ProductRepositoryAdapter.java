@@ -49,4 +49,9 @@ public class ProductRepositoryAdapter implements ProductRepository {
     public List<Product> findByCategoryId(String categoryId) {
         return productRepositoryJpa.findByCategoryId(categoryId).stream().map(ProductMapper::toProduct).toList();
     }
+
+    @Override
+    public List<Product> findByIds(List<String> favoriteProductsIds) {
+        return productRepositoryJpa.findByIdIn(favoriteProductsIds).stream().map(ProductMapper::toProduct).toList();
+    }
 }

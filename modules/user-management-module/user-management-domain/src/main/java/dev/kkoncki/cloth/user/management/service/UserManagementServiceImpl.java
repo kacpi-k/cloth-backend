@@ -9,6 +9,8 @@ import dev.kkoncki.cloth.user.management.repository.UserManagementRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -34,6 +36,7 @@ public class UserManagementServiceImpl implements UserManagementService {
                 .email(form.getEmail())
                 .gender(form.getGender())
                 .createdOn(Instant.now())
+                .favoriteProductsIds(new ArrayList<>())
                 .build();
         return userManagementRepository.save(user);
     }
@@ -61,5 +64,10 @@ public class UserManagementServiceImpl implements UserManagementService {
                 .build();
 
         return userManagementRepository.save(user);
+    }
+
+    @Override
+    public void saveFavoriteProduct(User user) {
+        userManagementRepository.save(user);
     }
 }

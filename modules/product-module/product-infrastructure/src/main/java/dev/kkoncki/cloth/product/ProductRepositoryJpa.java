@@ -13,4 +13,5 @@ public interface ProductRepositoryJpa extends JpaRepository<ProductEntity, Strin
     List<ProductEntity> findByCreatedOnGreaterThanEqual(Instant createdOn);
     List<ProductEntity> findBySalesNumberGreaterThan(int salesNumber);
     List<ProductEntity> findByCategoryId(String categoryId);
+    List<ProductEntity> findByIdIn(List<String> favoriteProductsIds);
 }

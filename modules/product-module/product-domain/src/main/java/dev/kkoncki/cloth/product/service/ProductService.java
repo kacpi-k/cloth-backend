@@ -16,7 +16,7 @@ public interface ProductService {
     List<Product> getNewIn();
     Product getProductById(String productId);
     Product save(@Valid CreateProductForm form);
-    Product update(@Valid UpdateProductForm form);
+    void update(@Valid UpdateProductForm form);
     void addOrRemoveFavoriteProduct(String userId, String productId); //TODO
     boolean isFavorite(String userId, String productId);//TODO
     List<Product> getFavoriteProducts(String userId); //TODO

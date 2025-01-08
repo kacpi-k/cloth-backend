@@ -1,8 +1,6 @@
 package dev.kkoncki.cloth.product.color;
 
 import dev.kkoncki.cloth.product.Product;
-import dev.kkoncki.cloth.product.ProductEntity;
-import dev.kkoncki.cloth.product.ProductMapper;
 import dev.kkoncki.cloth.product.color.repository.ColorRepository;
 import org.springframework.stereotype.Component;
 
@@ -17,8 +15,7 @@ public class ColorRepositoryAdapter implements ColorRepository {
 
     @Override
     public Color save(Color color, Product product) {
-        ProductEntity productEntity = ProductMapper.toProductEntity(product);
-        ColorEntity colorEntity = ColorMapper.toColorEntity(color, productEntity);
+        ColorEntity colorEntity = ColorMapper.toColorEntity(color);
         ColorEntity savedColorEntity = colorRepositoryJpa.save(colorEntity);
 
         return ColorMapper.toColor(savedColorEntity);

@@ -10,6 +10,7 @@ public class UserMapper {
                 .email(userEntity.getEmail())
                 .gender(userEntity.getGender())
                 .createdOn(userEntity.getCreatedOn())
+                .favoriteProductsIds(userEntity.getFavoriteProductIds())
                 .build();
     }
 }

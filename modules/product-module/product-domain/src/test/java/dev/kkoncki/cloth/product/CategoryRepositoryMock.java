@@ -15,4 +15,8 @@ public class CategoryRepositoryMock implements CategoryRepository {
         mockDB.put(category.getId(), category);
         return category;
     }
+
+    public void clear() {
+        mockDB.clear();
+    }
 }

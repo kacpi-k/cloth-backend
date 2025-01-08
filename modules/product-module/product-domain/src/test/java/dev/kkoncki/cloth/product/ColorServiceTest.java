@@ -10,6 +10,9 @@ import dev.kkoncki.cloth.product.forms.CreateProductForm;
 import dev.kkoncki.cloth.product.repository.ProductRepository;
 import dev.kkoncki.cloth.product.service.ProductService;
 import dev.kkoncki.cloth.product.service.ProductServiceImpl;
+import dev.kkoncki.cloth.user.management.repository.UserManagementRepository;
+import dev.kkoncki.cloth.user.management.service.UserManagementService;
+import dev.kkoncki.cloth.user.management.service.UserManagementServiceImpl;
 import jakarta.validation.*;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +24,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ColorServiceTest {
     ColorRepository colorRepository = new ColorRepositoryMock();
     ProductRepository productRepository = new ProductRepositoryMock();
-    ProductService productService = new ProductServiceImpl(productRepository);
+    UserManagementRepository userManagementRepository = new UserManagementRepositoryMock();
+    UserManagementService userManagementService = new UserManagementServiceImpl(userManagementRepository);
+    ProductService productService = new ProductServiceImpl(productRepository, userManagementService);
     ColorService colorService = new ColorServiceImpl(colorRepository, productService);
 
     private final ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();

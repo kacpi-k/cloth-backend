@@ -43,4 +43,15 @@ public class ProductRepositoryMock implements ProductRepository {
                 .filter(product -> product.getCategoryId().equals(categoryId))
                 .toList();
     }
+
+    @Override
+    public List<Product> findByIds(List<String> favoriteProductsIds) {
+        return mockDB.values().stream()
+                .filter(product -> favoriteProductsIds.contains(product.getId()))
+                .toList();
+    }
+
+    public void clear() {
+        mockDB.clear();
+    }
 }

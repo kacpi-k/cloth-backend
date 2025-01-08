@@ -1,12 +1,10 @@
 package dev.kkoncki.cloth.user.management;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Table(name = "user", schema = "public")
@@ -34,6 +32,11 @@ public class UserEntity {
 
     @Column(name = "created_on")
     private Instant createdOn;
+
+    @ElementCollection
+    @CollectionTable(name = "user_favorite_products", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "product_id")
+    private List<String> favoriteProductIds;
 
     public UserEntity(User user) {
         this.id = user.getId();
