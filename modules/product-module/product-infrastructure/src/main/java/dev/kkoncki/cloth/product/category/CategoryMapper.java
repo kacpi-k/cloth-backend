@@ -6,6 +6,7 @@ public class CategoryMapper {
         return CategoryEntity.builder()
                 .id(category.getId())
                 .title(category.getTitle())
+                .imageUrl(category.getImageUrl())
                 .build();
     }
 
@@ -13,6 +14,7 @@ public class CategoryMapper {
         return Category.builder()
                 .id(categoryEntity.getId())
                 .title(categoryEntity.getTitle())
+                .imageUrl(categoryEntity.getImageUrl())
                 .build();
     }
 }

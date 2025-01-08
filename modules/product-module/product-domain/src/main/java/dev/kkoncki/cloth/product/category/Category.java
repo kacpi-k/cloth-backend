@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class Category {
     private String id;
     private String title;
-    private String image;
+    private String imageUrl;
 }

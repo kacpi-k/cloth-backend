@@ -21,7 +21,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = Category.builder()
                 .id(UUID.randomUUID().toString())
                 .title(form.getTitle())
-                .image(form.getImage())
+                .imageUrl(form.getImage())
                 .build();
         return categoryRepository.save(category);
     }

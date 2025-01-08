@@ -3,8 +3,7 @@ package dev.kkoncki.cloth.product.service;
 import dev.kkoncki.cloth.commons.ApplicationException;
 import dev.kkoncki.cloth.commons.ErrorCode;
 import dev.kkoncki.cloth.product.Product;
-import dev.kkoncki.cloth.product.forms.CreateProductForm;
-import dev.kkoncki.cloth.product.forms.UpdateProductForm;
+import dev.kkoncki.cloth.product.forms.*;
 import dev.kkoncki.cloth.product.repository.ProductRepository;
 import dev.kkoncki.cloth.user.management.User;
 import dev.kkoncki.cloth.user.management.service.UserManagementService;
@@ -109,23 +108,26 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void sellProduct(String productId, int quantity) {
-        Product product = getProductById(productId);
-        product.setSalesNumber(product.getSalesNumber() + quantity);
+    public void sellProduct(SellProductForm form) {
+        Product product = getProductById(form.getProductId());
+        product.setSalesNumber(product.getSalesNumber() + form.getQuantity());
         productRepository.save(product);
     }
 
     @Override
-    public void updatePrice(String productId, double newPrice) {
-        Product product = getProductById(productId);
-        product.setPrice(newPrice);
+    public void updatePrice(UpdateProductPriceForm form) {
+        Product product = getProductById(form.getProductId());
+        product.setPrice(form.getNewPrice());
         productRepository.save(product);
     }
 
     @Override
-    public void addDiscount(String productId, double discountedPrice) {
-        Product product = getProductById(productId);
-        product.setDiscountedPrice(discountedPrice);
+    public void addDiscount(AddProductDiscountForm form) {
+        Product product = getProductById(form.getProductId());
+        if(product.getPrice() < form.getDiscountedPrice()) {
+            throw new ApplicationException(ErrorCode.DISCOUNTED_PRICE_HIGHER_THAN_PRICE);
+        }
+        product.setDiscountedPrice(form.getDiscountedPrice());
         productRepository.save(product);
     }
 }
