@@ -5,8 +5,7 @@ import dev.kkoncki.cloth.product.category.forms.CreateCategoryForm;
 import dev.kkoncki.cloth.product.category.repository.CategoryRepository;
 import dev.kkoncki.cloth.product.category.service.CategoryService;
 import dev.kkoncki.cloth.product.category.service.CategoryServiceImpl;
-import dev.kkoncki.cloth.product.forms.CreateProductForm;
-import dev.kkoncki.cloth.product.forms.UpdateProductForm;
+import dev.kkoncki.cloth.product.forms.*;
 import dev.kkoncki.cloth.product.repository.ProductRepository;
 import dev.kkoncki.cloth.product.service.ProductService;
 import dev.kkoncki.cloth.product.service.ProductServiceImpl;
@@ -228,8 +227,11 @@ public class ProductServiceTest {
                 List.of("image1.jpg", "image2.jpg")
         );
 
-        productService.sellProduct(product1.getId(), 31);
-        productService.sellProduct(product2.getId(), 29);
+        SellProductForm form1 = new SellProductForm(product1.getId(), 31);
+        SellProductForm form2 = new SellProductForm(product2.getId(), 29);
+
+        productService.sellProduct(form1);
+        productService.sellProduct(form2);
 
         List<Product> products = productService.getTopSelling();
 
@@ -285,7 +287,9 @@ public class ProductServiceTest {
                 List.of("image1.jpg", "image2.jpg")
         );
 
-        productService.sellProduct(product.getId(), 10);
+        SellProductForm form = new SellProductForm(product.getId(), 10);
+
+        productService.sellProduct(form);
 
         Product productAfterSale = productService.getProductById(product.getId());
 
@@ -303,7 +307,9 @@ public class ProductServiceTest {
                 List.of("image1.jpg", "image2.jpg")
         );
 
-        productService.updatePrice(product.getId(), 90.0);
+        UpdateProductPriceForm form = new UpdateProductPriceForm(product.getId(), 90.0);
+
+        productService.updatePrice(form);
 
         Product productAfterUpdate = productService.getProductById(product.getId());
 
@@ -321,7 +327,9 @@ public class ProductServiceTest {
                 List.of("image1.jpg", "image2.jpg")
         );
 
-        productService.addDiscount(product.getId(), 70.0);
+        AddProductDiscountForm form = new AddProductDiscountForm(product.getId(), 70.0);
+
+        productService.addDiscount(form);
 
         Product productAfterUpdate = productService.getProductById(product.getId());
 
@@ -431,6 +439,42 @@ public class ProductServiceTest {
         );
 
         Set<ConstraintViolation<UpdateProductForm>> violations = validator.validate(updateProductForm);
+
+        assertTrue(violations.isEmpty());
+    }
+
+    @Test
+    void validateAddProductDiscountForm() {
+        AddProductDiscountForm addProductDiscountForm = new AddProductDiscountForm(
+                "123e4567-e89b-12d3-a456-426614174000",
+                70.0
+        );
+
+        Set<ConstraintViolation<AddProductDiscountForm>> violations = validator.validate(addProductDiscountForm);
+
+        assertTrue(violations.isEmpty());
+    }
+
+    @Test
+    void validateSellProductForm() {
+        SellProductForm sellProductForm = new SellProductForm(
+                "123e4567-e89b-12d3-a456-426614174000",
+                10
+        );
+
+        Set<ConstraintViolation<SellProductForm>> violations = validator.validate(sellProductForm);
+
+        assertTrue(violations.isEmpty());
+    }
+
+    @Test
+    void validateUpdateProductPriceForm() {
+        UpdateProductPriceForm updateProductPriceForm = new UpdateProductPriceForm(
+                "123e4567-e89b-12d3-a456-426614174000",
+                90.0
+        );
+
+        Set<ConstraintViolation<UpdateProductPriceForm>> violations = validator.validate(updateProductPriceForm);
 
         assertTrue(violations.isEmpty());
     }
